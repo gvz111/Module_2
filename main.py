@@ -16,13 +16,19 @@ with col2:
 content2=""" There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc. """
 st.write(content2)
 
-col3, col4 = st.columns(2)
+col3, empty_col ,col4 = st.columns([1.5,0.5,1.5])
 
 df=pandas.read_csv("data.csv", sep=";")
 with col3:
     for index, row in df[:10].iterrows():
         st.header(row["title"])
+        st.write(row["description"])
+        st.image("images/"+ row["image"])
+        st.write(f"[Source code]({row['url']})")
     
 with col4:
     for index, row in df[10:].iterrows():
         st.header(row["title"])
+        st.write(row["description"])
+        st.image("images/"+ row["image"])
+        st.write(f"[Source code]({row['url']})")
